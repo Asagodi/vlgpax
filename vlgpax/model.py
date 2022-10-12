@@ -140,14 +140,12 @@ class Session:
         self.T += trial.T
 
     #@cached_property
-    @cache
     @property
     def y(self):
         return jnp.row_stack([trial.y for trial in self.trials])
 
     #@cached_property
     @property
-    @cache
     def x(self):
         return jnp.row_stack([trial.x for trial in self.trials])
 
