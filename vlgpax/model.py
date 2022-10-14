@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 # from functools import cached_property
+from cached_property import cached_property
 from typing import Any, Optional, List, Callable, Iterable
 
 from jax import numpy as jnp
@@ -139,13 +140,11 @@ class Session:
         self.tids.append(trial.tid)
         self.T += trial.T
 
-    #@cached_property
-    @property
+    @cached_property
     def y(self):
         return jnp.row_stack([trial.y for trial in self.trials])
 
-    #@cached_property
-    @property
+    @cached_property
     def x(self):
         return jnp.row_stack([trial.x for trial in self.trials])
 
